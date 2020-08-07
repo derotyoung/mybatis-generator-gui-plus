@@ -36,3 +36,4 @@ target/
 .settings/
 .project
 .classpath
+/config
