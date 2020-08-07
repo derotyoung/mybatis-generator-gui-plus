@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" stylesheets="@../style.css" vgap="0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zzg.mybatis.generator.controller.TabPaneController">
+
+  <columnConstraints>
+    <ColumnConstraints />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="697.0" minHeight="170.0" />
+    <RowConstraints maxHeight="422.0" minHeight="45.0" />
+  </rowConstraints>
+  <children>
+    <TabPane fx:id="tabPane" prefHeight="390.0" prefWidth="769.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="TCP/IP">
+          <content>
+            <fx:include fx:id="tabControlA" source="basicConnection.fxml" />
+          </content>
+        </Tab>
+        <Tab text="SSH">
+          <content>
+            <fx:include fx:id="tabControlB" source="sshBasedConnection.fxml" />
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+    <AnchorPane style="-fx-background-color: lightGrey;" GridPane.rowIndex="1">
+      <children>
+        <Button layoutX="27.0" mnemonicParsing="false" onAction="#testConnection" text="测试连接" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+          <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn-default" />
+          </styleClass>
+        </Button>
+        <Button layoutX="615.0" mnemonicParsing="false" onAction="#cancel" style="-fx-border-color: transparent;" text="取消" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="15.0">
+          <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn-default" />
+          </styleClass>
+        </Button>
+        <Button layoutX="687.0" mnemonicParsing="false" onAction="#saveConnection" text="保存" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+          <styleClass>
+            <String fx:value="btn-success" />
+            <String fx:value="btn" />
+          </styleClass>
+        </Button>
+
+      </children>
+    </AnchorPane>
+  </children>
+</GridPane>
