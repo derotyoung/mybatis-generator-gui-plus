@@ -55,6 +55,8 @@ public interface Rules {
      */
     FullyQualifiedJavaType calculateAllFieldsClass();
 
+    FullyQualifiedJavaType calculateAllFieldsClassList();
+
     /**
      * Implements the rule for generating the update by primary key without
      * BLOBs SQL Map element and DAO method. If the table has a primary key as
@@ -84,6 +86,12 @@ public interface Rules {
      * @return true if the element and method should be generated
      */
     boolean generateUpdateByPrimaryKeySelective();
+
+    boolean generateBatchUpdate();
+
+    boolean generateBatchUpdateSelective();
+
+    boolean generateBatchInsert();
 
     /**
      * Implements the rule for generating the delete by primary key SQL Map

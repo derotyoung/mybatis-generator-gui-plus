@@ -87,6 +87,9 @@ public abstract class IntrospectedTable {
         ATTR_UPDATE_BY_PRIMARY_KEY_STATEMENT_ID,
         ATTR_UPDATE_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID,
         ATTR_UPDATE_BY_PRIMARY_KEY_WITH_BLOBS_STATEMENT_ID,
+        ATTR_BATCH_UPDATE_STATEMENT_ID,
+        ATTR_BATCH_UPDATE_SELECTIVE_STATEMENT_ID,
+        ATTR_BATCH_INSERT_STATEMENT_ID,
         ATTR_BASE_RESULT_MAP_ID,
         ATTR_RESULT_MAP_WITH_BLOBS_ID,
         ATTR_EXAMPLE_WHERE_CLAUSE_ID,
@@ -424,6 +427,9 @@ public abstract class IntrospectedTable {
         setUpdateByPrimaryKeyStatementId("updateByPrimaryKey"); //$NON-NLS-1$
         setUpdateByPrimaryKeySelectiveStatementId("updateByPrimaryKeySelective"); //$NON-NLS-1$
         setUpdateByPrimaryKeyWithBLOBsStatementId("updateByPrimaryKeyWithBLOBs"); //$NON-NLS-1$
+        setBatchUpdateStatementId("batchUpdate");
+        setBatchUpdateSelectiveStatementId("batchUpdateSelective");
+        setBatchInsertStatementId("batchInsert");
         setBaseResultMapId("BaseResultMap"); //$NON-NLS-1$
         setResultMapWithBLOBsId("ResultMapWithBLOBs"); //$NON-NLS-1$
         setExampleWhereClauseId("Example_Where_Clause"); //$NON-NLS-1$
@@ -542,6 +548,21 @@ public abstract class IntrospectedTable {
                 InternalAttribute.ATTR_COUNT_BY_EXAMPLE_STATEMENT_ID, s);
     }
 
+    public void setBatchUpdateStatementId(String s) {
+        internalAttributes.put(
+                InternalAttribute.ATTR_BATCH_UPDATE_STATEMENT_ID, s);
+    }
+
+    public void setBatchUpdateSelectiveStatementId(String s) {
+        internalAttributes.put(
+                InternalAttribute.ATTR_BATCH_UPDATE_SELECTIVE_STATEMENT_ID, s);
+    }
+
+    public void setBatchInsertStatementId(String s) {
+        internalAttributes.put(
+                InternalAttribute.ATTR_BATCH_INSERT_STATEMENT_ID, s);
+    }
+
     public String getBlobColumnListId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_BLOB_COLUMN_LIST_ID);
@@ -645,6 +666,21 @@ public abstract class IntrospectedTable {
     public String getCountByExampleStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_COUNT_BY_EXAMPLE_STATEMENT_ID);
+    }
+
+    public String getBatchUpdateStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_BATCH_UPDATE_STATEMENT_ID);
+    }
+
+    public String getBatchUpdateSelectiveStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_BATCH_UPDATE_SELECTIVE_STATEMENT_ID);
+    }
+
+    public String getBatchInsertStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_BATCH_INSERT_STATEMENT_ID);
     }
 
     private boolean isSubPackagesEnabled(PropertyHolder propertyHolder) {

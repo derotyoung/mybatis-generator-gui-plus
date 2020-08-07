@@ -23,6 +23,9 @@ import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.config.TableConfiguration;
 import org.mybatis.generator.internal.util.StringUtility;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  * This class centralizes all the rules related to code generation - including
  * the methods and objects to create, and certain attributes related to those
@@ -98,6 +101,18 @@ public abstract class BaseRules implements Rules {
         return new FullyQualifiedJavaType(answer);
     }
 
+    @Override
+    public FullyQualifiedJavaType calculateAllFieldsClassList() {
+
+        FullyQualifiedJavaType ret = FullyQualifiedJavaType.getNewListInstance();
+
+        FullyQualifiedJavaType listType = calculateAllFieldsClass();
+
+        ret.addTypeArgument(listType);
+
+        return ret;
+    }
+
     /**
      * Implements the rule for generating the update by primary key without
      * BLOBs SQL Map element and DAO method. If the table has a primary key as
@@ -166,6 +181,45 @@ public abstract class BaseRules implements Rules {
                 && introspectedTable.hasPrimaryKeyColumns()
                 && (introspectedTable.hasBLOBColumns() || introspectedTable
                         .hasBaseColumns());
+    }
+
+    @Override
+    public boolean generateBatchUpdate() {
+        if (isModelOnly) {
+            return false;
+        }
+
+        if (ListUtilities.removeGeneratedAlwaysColumns(introspectedTable.getNonPrimaryKeyColumns()).isEmpty()) {
+            return false;
+        }
+
+        return introspectedTable.hasPrimaryKeyColumns();
+    }
+
+    @Override
+    public boolean generateBatchUpdateSelective() {
+        if (isModelOnly) {
+            return false;
+        }
+
+        if (ListUtilities.removeGeneratedAlwaysColumns(introspectedTable.getNonPrimaryKeyColumns()).isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean generateBatchInsert() {
+        if (isModelOnly) {
+            return false;
+        }
+
+        if (ListUtilities.removeGeneratedAlwaysColumns(introspectedTable.getNonPrimaryKeyColumns()).isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

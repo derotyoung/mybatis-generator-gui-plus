@@ -70,6 +70,11 @@ public class RulesDelegate implements Rules {
     }
 
     @Override
+    public FullyQualifiedJavaType calculateAllFieldsClassList() {
+        return rules.calculateAllFieldsClassList();
+    }
+
+    @Override
     public boolean generateBaseRecordClass() {
         return rules.generateBaseRecordClass();
     }
@@ -167,6 +172,21 @@ public class RulesDelegate implements Rules {
     @Override
     public boolean generateUpdateByPrimaryKeySelective() {
         return rules.generateUpdateByPrimaryKeySelective();
+    }
+
+    @Override
+    public boolean generateBatchUpdate() {
+        return rules.generateBatchUpdate();
+    }
+
+    @Override
+    public boolean generateBatchUpdateSelective() {
+        return rules.generateBatchUpdateSelective();
+    }
+
+    @Override
+    public boolean generateBatchInsert() {
+        return rules.generateBatchInsert();
     }
 
     @Override

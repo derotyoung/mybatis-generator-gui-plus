@@ -50,6 +50,28 @@ public class MyBatis3FormattingUtilities {
         return sb.toString();
     }
 
+    public static String getItemParameterClause(IntrospectedColumn introspectedColumn) {
+        return getItemParameterClause(introspectedColumn, null);
+    }
+
+    public static String getItemParameterClause(IntrospectedColumn introspectedColumn, String prefix) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("#{item."); //$NON-NLS-1$
+        sb.append(introspectedColumn.getJavaProperty(prefix));
+        sb.append(",jdbcType="); //$NON-NLS-1$
+        sb.append(introspectedColumn.getJdbcTypeName());
+
+        if (stringHasValue(introspectedColumn.getTypeHandler())) {
+            sb.append(",typeHandler="); //$NON-NLS-1$
+            sb.append(introspectedColumn.getTypeHandler());
+        }
+
+        sb.append('}');
+
+        return sb.toString();
+    }
+
     /**
      * The phrase to use in a select list. If there is a table alias, the value will be
      * "alias.columnName as alias_columnName"
