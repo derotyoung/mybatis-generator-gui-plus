@@ -1,7 +1,7 @@
 mybatis-generator-gui-plus
 ==============
 
-[mybatis-generator-gui-plus](https://gitee.com/derotyang/mybatis-generator-gui-plus)是基于[mybatis generator-gui](https://github.com/zouzg/mybatis-generator-gui)扩展的工具，区别在于功能上的扩展了批量操作的方法，其他几乎没有差别。
+mybatis-generator-gui-plus是基于 [mybatis generator-gui](https://github.com/zouzg/mybatis-generator-gui) 扩展的工具，区别在于功能上的扩展了批量操作的方法，其他几乎没有差别。
 
 增加的方法说明：
 
