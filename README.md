@@ -39,7 +39,7 @@ mybatis-generator-gui-plus是基于 [mybatis generator-gui](https://github.com/z
 
 * 方法一：IDE中运行
   
-  该项目下依赖两个模块，其中一个 `mybatis-generator-core` 未建立关联，需要手动导入 `mybatis-generator-core` pom文件，导入后在 Eclipse 或 IntelliJ IDEA中启动，在`mybatis-generator-gui`模块下找到`com.zzg.mybatis.generator.MainUI`类并运行就可以了（检查你的IED运行的jdk版本是否符合要求）
+  该项目下依赖两个模块 `mybatis-generator-core`和 `mybatis-generator-gui` ，在`mybatis-generator-gui`模块下找到`com.zzg.mybatis.generator.MainUI`类并运行就可以了（检查你的IED运行的jdk版本是否符合要求）
 
 * 其他方法: 可参考原项目中的其他方式，其他方式本项目均为测试过是否可用，不保证可以启动。推荐在IDE中启动
 
