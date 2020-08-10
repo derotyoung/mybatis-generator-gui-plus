@@ -21,15 +21,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!--<parent>
+  <parent>
     <groupId>org.mybatis.generator</groupId>
     <artifactId>mybatis-generator</artifactId>
     <version>1.4.0</version>
-  </parent>-->
-  <parent>
-    <artifactId>mybatis-generator-gui-plus</artifactId>
-    <groupId>io.derotyoung</groupId>
-    <version>1.0.0.RELEASE</version>
   </parent>
 
   <artifactId>mybatis-generator-core</artifactId>

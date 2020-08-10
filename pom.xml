@@ -9,21 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0.0.RELEASE</version>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator</artifactId>
-                <version>1.4.0</version>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <modules>
         <module>mybatis-generator-core</module>
         <module>mybatis-generator-gui</module>
     </modules>
-
 
 </project>
