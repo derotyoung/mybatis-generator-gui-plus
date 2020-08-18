@@ -11,6 +11,8 @@ mybatis-generator-gui-plus是基于 [mybatis generator-gui](https://github.com/z
 
 批量插入 batchInsert
 
+条件查询返回一个 selectFirstByExample
+
 ![image](https://user-images.githubusercontent.com/3505708/49334784-1a42c980-f619-11e8-914d-9ea85db9cec3.png)
 
 
