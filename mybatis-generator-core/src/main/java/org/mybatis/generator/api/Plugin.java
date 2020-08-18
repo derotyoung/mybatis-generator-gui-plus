@@ -1357,6 +1357,9 @@ public interface Plugin {
     boolean sqlMapSelectByExampleWithBLOBsElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
+    boolean sqlMapSelectFirstByExampleElementGenerated(XmlElement element,
+            IntrospectedTable introspectedTable);
+
     /**
      * This method is called when the updateByExampleSelective element is
      * generated.

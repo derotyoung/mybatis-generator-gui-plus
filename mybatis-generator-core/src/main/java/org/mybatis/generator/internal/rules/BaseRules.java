@@ -389,6 +389,15 @@ public abstract class BaseRules implements Rules {
                 && introspectedTable.hasBLOBColumns();
     }
 
+    @Override
+    public boolean generateSelectFirstByExample() {
+        if (isModelOnly) {
+            return false;
+        }
+
+        return tableConfiguration.isSelectFirstByExampleStatementEnabled();
+    }
+
     /**
      * Implements the rule for generating an example class. The class should be
      * generated if the selectByExample or deleteByExample or countByExample

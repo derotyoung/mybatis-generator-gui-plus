@@ -1060,6 +1060,18 @@ public abstract class CompositePlugin implements Plugin {
     }
 
     @Override
+    public boolean sqlMapSelectFirstByExampleElementGenerated(XmlElement element,
+            IntrospectedTable introspectedTable) {
+        for (Plugin plugin : plugins) {
+            if (!plugin.sqlMapSelectFirstByExampleElementGenerated(element, introspectedTable)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean sqlMapUpdateByExampleSelectiveElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable) {
         for (Plugin plugin : plugins) {

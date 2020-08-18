@@ -36,6 +36,8 @@ public class TableConfiguration extends PropertyHolder {
 
     private boolean selectByExampleStatementEnabled;
 
+    private boolean selectFirstByExampleStatementEnabled;
+
     private boolean updateByPrimaryKeyStatementEnabled;
 
     private boolean deleteByPrimaryKeyStatementEnabled;
@@ -94,6 +96,7 @@ public class TableConfiguration extends PropertyHolder {
         insertStatementEnabled = true;
         selectByPrimaryKeyStatementEnabled = true;
         selectByExampleStatementEnabled = true;
+        selectFirstByExampleStatementEnabled = true;
         updateByPrimaryKeyStatementEnabled = true;
         deleteByPrimaryKeyStatementEnabled = true;
         deleteByExampleStatementEnabled = true;
@@ -200,6 +203,14 @@ public class TableConfiguration extends PropertyHolder {
     public void setSelectByExampleStatementEnabled(
             boolean selectByExampleStatementEnabled) {
         this.selectByExampleStatementEnabled = selectByExampleStatementEnabled;
+    }
+
+    public boolean isSelectFirstByExampleStatementEnabled() {
+        return selectFirstByExampleStatementEnabled;
+    }
+
+    public void setSelectFirstByExampleStatementEnabled(boolean selectFirstByExampleStatementEnabled) {
+        this.selectFirstByExampleStatementEnabled = selectFirstByExampleStatementEnabled;
     }
 
     /**

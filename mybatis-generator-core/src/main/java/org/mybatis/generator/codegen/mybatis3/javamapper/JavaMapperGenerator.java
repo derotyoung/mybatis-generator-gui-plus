@@ -76,6 +76,7 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
         addInsertSelectiveMethod(interfaze);
         addSelectByExampleWithBLOBsMethod(interfaze);
         addSelectByExampleWithoutBLOBsMethod(interfaze);
+        addSelectFirstByExampleMethod(interfaze);
         addSelectByPrimaryKeyMethod(interfaze);
         addUpdateByExampleSelectiveMethod(interfaze);
         addUpdateByExampleWithBLOBsMethod(interfaze);
@@ -167,6 +168,13 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
     protected void addSelectByExampleWithoutBLOBsMethod(Interface interfaze) {
         if (introspectedTable.getRules().generateSelectByExampleWithoutBLOBs()) {
             AbstractJavaMapperMethodGenerator methodGenerator = new SelectByExampleWithoutBLOBsMethodGenerator();
+            initializeAndExecuteGenerator(methodGenerator, interfaze);
+        }
+    }
+
+    protected void addSelectFirstByExampleMethod(Interface interfaze) {
+        if (introspectedTable.getRules().generateSelectByExampleWithoutBLOBs()) {
+            AbstractJavaMapperMethodGenerator methodGenerator = new SelectFirstByExampleMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, interfaze);
         }
     }

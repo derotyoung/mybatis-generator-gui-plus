@@ -140,6 +140,11 @@ public class RulesDelegate implements Rules {
     }
 
     @Override
+    public boolean generateSelectFirstByExample() {
+        return rules.generateSelectFirstByExample();
+    }
+
+    @Override
     public boolean generateSelectByPrimaryKey() {
         return rules.generateSelectByPrimaryKey();
     }

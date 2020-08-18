@@ -196,6 +196,8 @@ public interface Rules {
      */
     boolean generateSelectByExampleWithBLOBs();
 
+    boolean generateSelectFirstByExample();
+
     /**
      * Implements the rule for generating an example class. The class should be
      * generated if the selectByExample or deleteByExample or countByExample

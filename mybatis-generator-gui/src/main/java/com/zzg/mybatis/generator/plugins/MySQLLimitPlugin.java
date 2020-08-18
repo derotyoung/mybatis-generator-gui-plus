@@ -119,4 +119,12 @@ public class MySQLLimitPlugin extends PluginAdapter {
 
         return true;
     }
+
+    @Override
+    public boolean sqlMapSelectFirstByExampleElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
+        TextElement limitOneElement = new TextElement("limit 1");
+        element.addElement(limitOneElement);
+
+        return true;
+    }
 }

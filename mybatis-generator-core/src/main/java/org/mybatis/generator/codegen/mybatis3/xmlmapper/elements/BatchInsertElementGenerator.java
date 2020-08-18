@@ -102,7 +102,7 @@ public class BatchInsertElementGenerator extends AbstractXmlElementGenerator {
         answer.addElement(foreach);
 
         if (context.getPlugins()
-                .sqlMapUpdateByExampleSelectiveElementGenerated(answer,
+                .sqlMapInsertElementGenerated(answer,
                         introspectedTable)) {
             parentElement.addElement(answer);
         }

@@ -24,6 +24,7 @@ import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.Document;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.Context;
 
@@ -389,6 +390,12 @@ public abstract class PluginAdapter implements Plugin {
 
     @Override
     public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable) {
+        return true;
+    }
+
+    @Override
+    public boolean sqlMapSelectFirstByExampleElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }

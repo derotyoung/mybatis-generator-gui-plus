@@ -50,6 +50,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addBlobColumnListElement(answer);
         addSelectByExampleWithBLOBsElement(answer);
         addSelectByExampleWithoutBLOBsElement(answer);
+        addSelectFirstByExampleElement(answer);
         addSelectByPrimaryKeyElement(answer);
         addDeleteByPrimaryKeyElement(answer);
         addDeleteByExampleElement(answer);
@@ -126,6 +127,13 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     protected void addSelectByExampleWithBLOBsElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateSelectByExampleWithBLOBs()) {
             AbstractXmlElementGenerator elementGenerator = new SelectByExampleWithBLOBsElementGenerator();
+            initializeAndExecuteGenerator(elementGenerator, parentElement);
+        }
+    }
+
+    protected void addSelectFirstByExampleElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateSelectByPrimaryKey()) {
+            AbstractXmlElementGenerator elementGenerator = new SelectFirstByExampleElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
