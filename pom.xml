@@ -10,7 +10,7 @@
     <version>1.0.0.RELEASE</version>
 
     <modules>
-        <module>mybatis-generator-core</module>
+        <!--<module>mybatis-generator-core</module>-->
         <module>mybatis-generator-gui</module>
     </modules>
 
