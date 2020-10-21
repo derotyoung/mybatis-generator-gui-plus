@@ -132,7 +132,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     }
 
     protected void addSelectFirstByExampleElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateSelectByPrimaryKey()) {
+        if (introspectedTable.getRules().generateSelectFirstByExample()) {
             AbstractXmlElementGenerator elementGenerator = new SelectFirstByExampleElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }

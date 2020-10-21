@@ -42,6 +42,17 @@ public class SelectFirstByExampleMethodGenerator extends
 
         FullyQualifiedJavaType returnType = introspectedTable.getRules()
                 .calculateAllFieldsClass();
+
+        /*FullyQualifiedJavaType returnType;
+        if (introspectedTable.getRules().generateRecordWithBLOBsClass()) {
+            returnType = new FullyQualifiedJavaType(introspectedTable
+                    .getRecordWithBLOBsType());
+        } else {
+            // the blob fields must be rolled up into the base class
+            returnType = new FullyQualifiedJavaType(introspectedTable
+                    .getBaseRecordType());
+        }*/
+
         importedTypes.add(returnType);
         method.setReturnType(returnType);
         method.addParameter(new Parameter(type, "example"));

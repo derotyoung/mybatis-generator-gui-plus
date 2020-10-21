@@ -1036,6 +1036,18 @@ public abstract class CompositePlugin implements Plugin {
     }
 
     @Override
+    public boolean sqlMapSelectFirstByExampleElementGenerated(XmlElement element,
+                                                              IntrospectedTable introspectedTable) {
+        for (Plugin plugin : plugins) {
+            if (!plugin.sqlMapSelectFirstByExampleElementGenerated(element, introspectedTable)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable) {
         for (Plugin plugin : plugins) {
@@ -1056,18 +1068,6 @@ public abstract class CompositePlugin implements Plugin {
             }
         }
         
-        return true;
-    }
-
-    @Override
-    public boolean sqlMapSelectFirstByExampleElementGenerated(XmlElement element,
-            IntrospectedTable introspectedTable) {
-        for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapSelectFirstByExampleElementGenerated(element, introspectedTable)) {
-                return false;
-            }
-        }
-
         return true;
     }
 

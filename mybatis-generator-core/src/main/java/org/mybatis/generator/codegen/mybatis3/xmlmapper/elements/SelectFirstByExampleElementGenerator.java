@@ -19,8 +19,6 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-
 public class SelectFirstByExampleElementGenerator extends
         AbstractXmlElementGenerator {
 
@@ -35,46 +33,45 @@ public class SelectFirstByExampleElementGenerator extends
         XmlElement answer = new XmlElement("select");
         answer.addAttribute(new Attribute(
                 "id", introspectedTable.getSelectFirstByExampleStatementId()));
-        answer.addAttribute(new Attribute(
-                "resultMap", introspectedTable.getBaseResultMapId())); //$NON-NLS-1$
+        if (introspectedTable.getRules().generateResultMapWithBLOBs()) {
+            answer.addAttribute(new Attribute("resultMap", //$NON-NLS-1$
+                    introspectedTable.getResultMapWithBLOBsId()));
+        } else {
+            answer.addAttribute(new Attribute("resultMap", //$NON-NLS-1$
+                    introspectedTable.getBaseResultMapId()));
+        }
+
         answer.addAttribute(new Attribute("parameterType", example)); //$NON-NLS-1$
 
         context.getCommentGenerator().addComment(answer);
 
-        answer.addElement(new TextElement("select")); //$NON-NLS-1$
-        XmlElement ifElement = new XmlElement("if"); //$NON-NLS-1$
-        ifElement.addAttribute(new Attribute("test", "distinct")); //$NON-NLS-1$ //$NON-NLS-2$
-        ifElement.addElement(new TextElement("distinct")); //$NON-NLS-1$
-        answer.addElement(ifElement);
-
-        StringBuilder sb = new StringBuilder();
-        if (stringHasValue(introspectedTable
-                .getSelectByExampleQueryId())) {
-            sb.append('\'');
-            sb.append(introspectedTable.getSelectByExampleQueryId());
-            sb.append("' as QUERYID,"); //$NON-NLS-1$
-            answer.addElement(new TextElement(sb.toString()));
-        }
+        answer.addElement(new TextElement("select ")); //$NON-NLS-1$
+        XmlElement distinctElement = new XmlElement("if"); //$NON-NLS-1$
+        distinctElement.addAttribute(new Attribute("test", "distinct")); //$NON-NLS-1$ //$NON-NLS-2$
+        distinctElement.addElement(new TextElement("distinct")); //$NON-NLS-1$
+        answer.addElement(distinctElement);
 
         answer.addElement(getBaseColumnListElement());
-        answer.addElement(new TextElement(",")); //$NON-NLS-1$
-        answer.addElement(getBlobColumnListElement());
+        if (introspectedTable.hasBLOBColumns()) {
+            answer.addElement(new TextElement(",")); //$NON-NLS-1$
+            answer.addElement(getBlobColumnListElement());
+        }
 
-        sb.setLength(0);
+        StringBuilder sb = new StringBuilder();
         sb.append("from "); //$NON-NLS-1$
         sb.append(introspectedTable
                 .getAliasedFullyQualifiedTableNameAtRuntime());
         answer.addElement(new TextElement(sb.toString()));
+
         answer.addElement(getExampleIncludeElement());
 
-        ifElement = new XmlElement("if"); //$NON-NLS-1$
+        XmlElement ifElement = new XmlElement("if"); //$NON-NLS-1$
         ifElement.addAttribute(new Attribute("test", "orderByClause != null")); //$NON-NLS-1$ //$NON-NLS-2$
         ifElement.addElement(new TextElement("order by ${orderByClause}")); //$NON-NLS-1$
         answer.addElement(ifElement);
 
-        if (context.getPlugins()
-                .sqlMapSelectFirstByExampleElementGenerated(answer,
-                        introspectedTable)) {
+        if (context.getPlugins().sqlMapSelectFirstByExampleElementGenerated(
+                answer, introspectedTable)) {
             parentElement.addElement(answer);
         }
     }

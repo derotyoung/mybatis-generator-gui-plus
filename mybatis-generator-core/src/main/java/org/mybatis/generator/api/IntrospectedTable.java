@@ -630,6 +630,11 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_STATEMENT_ID);
     }
 
+    public String getSelectFirstByExampleStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_SELECT_FIRST_BY_EXAMPLE_STATEMENT_ID);
+    }
+
     public String getSelectByPrimaryKeyStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_SELECT_BY_PRIMARY_KEY_STATEMENT_ID);
@@ -648,11 +653,6 @@ public abstract class IntrospectedTable {
     public String getSelectByExampleStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID);
-    }
-
-    public String getSelectFirstByExampleStatementId() {
-        return internalAttributes
-                .get(InternalAttribute.ATTR_SELECT_FIRST_BY_EXAMPLE_STATEMENT_ID);
     }
 
     public String getInsertSelectiveStatementId() {

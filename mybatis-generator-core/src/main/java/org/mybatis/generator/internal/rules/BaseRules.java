@@ -355,6 +355,17 @@ public abstract class BaseRules implements Rules {
                         .hasBLOBColumns());
     }
 
+    @Override
+    public boolean generateSelectFirstByExample() {
+        if (isModelOnly) {
+            return false;
+        }
+
+        return tableConfiguration.isSelectFirstByExampleStatementEnabled()
+                && (introspectedTable.hasBaseColumns() || introspectedTable
+                .hasBLOBColumns());
+    }
+
     /**
      * Implements the rule for generating the select by example without BLOBs
      * SQL Map element and DAO method. If the selectByExample statement is
@@ -387,15 +398,6 @@ public abstract class BaseRules implements Rules {
         
         return tableConfiguration.isSelectByExampleStatementEnabled()
                 && introspectedTable.hasBLOBColumns();
-    }
-
-    @Override
-    public boolean generateSelectFirstByExample() {
-        if (isModelOnly) {
-            return false;
-        }
-
-        return tableConfiguration.isSelectFirstByExampleStatementEnabled();
     }
 
     /**
