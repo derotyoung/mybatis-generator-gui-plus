@@ -6,11 +6,7 @@ package com.zzg.mybatis.generator.util;
 public class MyStringUtils {
 
     /**
-     *
      * convert string from slash style to camel style, such as my_course will convert to MyCourse
-     *
-     * @param str
-     * @return
      */
     public static String dbStringToCamelStyle(String str) {
         if (str != null) {

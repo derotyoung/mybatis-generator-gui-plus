@@ -11,7 +11,9 @@ import java.sql.DriverManager;
  * Created by Owen on 8/21/16.
  */
 public class ConnectionManager {
+
     private static final Logger _LOG = LoggerFactory.getLogger(ConnectionManager.class);
+
     private static final String DB_URL = "jdbc:sqlite:./config/sqlite3.db";
 
     public static Connection getConnection() throws Exception {

@@ -31,7 +31,7 @@ mybatis-generator-gui-plus是基于 [mybatis generator-gui](https://github.com/z
 * 目前已经支持Mysql、Mysql8、Oracle、PostgreSQL与SQL Server，暂不对其他非主流数据库提供支持。(MySQL支持的比较好，其他数据库有什么问题可以在issue中反馈)
 
 ### 要求
-本工具由于使用了Java 8的众多特性，JDK <strong>1.8.0.60</strong>以上版本，另外只支持<strong>JDK 1.8</strong>。
+本工具由于使用了JavaFX 特性，需要JDK <strong>1.8</strong>及以上版本，支持 OracleJDK、OpenJDK。
 
 ### 下载
 推荐使用 Git 工具克隆项目到本地。
