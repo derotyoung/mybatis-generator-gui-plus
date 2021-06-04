@@ -155,6 +155,8 @@ public class MybatisGeneratorBridge {
         JavaModelGeneratorConfiguration modelConfig = new JavaModelGeneratorConfiguration();
         modelConfig.setTargetPackage(generatorConfig.getModelPackage());
         modelConfig.setTargetProject(generatorConfig.getProjectFolder() + "/" + generatorConfig.getModelPackageTargetFolder());
+        modelConfig.addProperty(PropertyRegistry.MODEL_GENERATOR_EXAMPLE_PACKAGE, generatorConfig.getModelPackage()+".example");
+        modelConfig.addProperty(PropertyRegistry.MODEL_GENERATOR_EXAMPLE_PROJECT, modelConfig.getTargetProject());
         // Mapper configuration
         SqlMapGeneratorConfiguration mapperConfig = new SqlMapGeneratorConfiguration();
         mapperConfig.setTargetPackage(generatorConfig.getMappingXMLPackage());
